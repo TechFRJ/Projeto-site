@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="FARJ Digital - Painel Administrativo" />
+    <title>Admin - FARJ Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div id="auth-check" class="flex items-center justify-center h-screen">
+      <div class="text-center">
+        <div class="inline-block w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-gray-600">Verificando autenticação...</p>
+      </div>
+    </div>
+
+    <div id="admin-panel" class="hidden min-h-screen">
+      <!-- Navigation -->
+      <nav class="bg-gray-900 text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <h1 class="text-2xl font-bold">Admin Dashboard</h1>
+            <span class="text-gray-400">|</span>
+            <span id="user-email" class="text-sm text-gray-400">Carregando...</span>
+          </div>
+          <a href="/auth/logout" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition">
+            Sair
+          </a>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-8">Gerenciar Serviços</h2>
+
+        <!-- Services Table -->
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <table class="w-full">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="px-6 py-4 text-left font-semibold">Serviço</th>
+                <th class="px-6 py-4 text-left font-semibold">Descrição</th>
+                <th class="px-6 py-4 text-right font-semibold">Preço (R$)</th>
+                <th class="px-6 py-4 text-center font-semibold">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="services-tbody">
+              <tr>
+                <td colspan="4" class="px-6 py-4 text-center text-gray-500">
+                  <div class="inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Add Service Button (future feature) -->
+        <div class="mt-8">
+          <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded transition" disabled title="Funcionalidade em desenvolvimento">
+            + Adicionar Novo Serviço
+          </button>
+          <p class="text-sm text-gray-500 mt-2">Funcionalidade em desenvolvimento</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-lg shadow-lg max-w-md w-full">
+        <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+          <h3 class="text-xl font-bold">Editar Serviço</h3>
+          <button id="modal-close" class="text-gray-400 hover:text-gray-600">✕</button>
+        </div>
+
+        <form id="edit-form" class="px-6 py-4 space-y-4">
+          <input type="hidden" id="edit-service-id" />
+
+          <div>
+            <label for="edit-nome" class="block text-sm font-semibold mb-2">Serviço</label>
+            <input
+              type="text"
+              id="edit-nome"
+              class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+              disabled
+            />
+          </div>
+
+          <div>
+            <label for="edit-preco" class="block text-sm font-semibold mb-2">Preço (R$)</label>
+            <input
+              type="number"
+              id="edit-preco"
+              step="0.01"
+              min="0"
+              class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="edit-descricao" class="block text-sm font-semibold mb-2">Descrição</label>
+            <input
+              type="text"
+              id="edit-descricao"
+              class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+            />
+          </div>
+
+          <div>
+            <label for="edit-detalhes" class="block text-sm font-semibold mb-2">Detalhes</label>
+            <textarea
+              id="edit-detalhes"
+              rows="3"
+              class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+            ></textarea>
+          </div>
+
+          <div id="edit-status" class="hidden mt-4 p-3 rounded text-sm"></div>
+
+          <div class="flex gap-3 pt-4">
+            <button
+              type="submit"
+              id="edit-submit"
+              class="flex-1 bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition"
+            >
+              Salvar
+            </button>
+            <button
+              type="button"
+              id="modal-cancel"
+              class="flex-1 bg-gray-300 text-gray-900 py-2 rounded font-semibold hover:bg-gray-400 transition"
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="/admin/js/auth-check.js"></script>
+    <script src="/admin/js/admin.js"></script>
+  </body>
+</html>
