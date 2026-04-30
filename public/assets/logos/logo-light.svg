@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <!-- Main logo icon -->
+  <g>
+    <!-- Top bar -->
+    <rect x="20" y="10" width="50" height="12" fill="#00D4FF" transform="skewX(-20)"/>
+    <!-- Middle section -->
+    <g>
+      <rect x="15" y="28" width="60" height="8" fill="#0099FF"/>
+      <circle cx="40" cy="48" r="6" fill="#00D4FF"/>
+      <path d="M 30 50 L 50 50 L 45 70 L 35 70 Z" fill="#00D4FF" transform="skewX(-10)"/>
+    </g>
+  </g>
+
+  <!-- Text -->
+  <text x="95" y="55" font-size="48" font-weight="bold" fill="white" font-family="Arial, sans-serif">FARJ</text>
+  <text x="95" y="75" font-size="18" font-weight="300" fill="#00D4FF" font-family="Arial, sans-serif" letter-spacing="4">DIGITAL</text>
+</svg>
