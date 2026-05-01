@@ -35,3 +35,12 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# Docker
+.dockerignore
+
+# Database
+database.sqlite3
+
+# Vercel local link (not for deployment)
+.vercel/

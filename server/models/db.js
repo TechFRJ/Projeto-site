@@ -102,6 +102,22 @@ async function seedServices() {
       preco: 2000,
       icone: 'rocket',
     },
+    {
+      id: 'marketing-digital',
+      nome: 'Marketing Digital',
+      descricao: 'Estratégias de tráfego pago, SEO e presença digital para atrair mais clientes.',
+      detalhes: 'Gestão completa de tráfego pago (Google Ads, Meta Ads), SEO on-page e off-page, criação de conteúdo e relatórios mensais de performance.',
+      preco: 1800,
+      icone: 'megaphone',
+    },
+    {
+      id: 'automacao',
+      nome: 'Automação Instagram & WhatsApp',
+      descricao: 'Bots e automações para atendimento, captação de leads e vendas 24h por dia.',
+      detalhes: 'Desenvolvimento de chatbots inteligentes para Instagram e WhatsApp. Fluxos de atendimento automatizados, captação de leads e integração com CRM.',
+      preco: 2500,
+      icone: 'bot',
+    },
   ];
 
   for (const service of services) {
@@ -111,7 +127,7 @@ async function seedServices() {
     );
   }
 
-  console.log('✓ Seeded 4 default services');
+  console.log('✓ Seeded 6 default services');
 }
 
 export function getDatabase() {

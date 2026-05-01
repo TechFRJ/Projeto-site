@@ -1,170 +1,944 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="FARJ Digital - Desenvolvimento de Sites, Servidores e Sistemas. Soluções profissionais para sua empresa." />
-    <meta name="keywords" content="desenvolvimento de sites, servidores, sistemas, landing pages, web development" />
-    <meta property="og:title" content="FARJ Digital - Desenvolvimento de Sites e Sistemas" />
-    <meta property="og:description" content="Serviços profissionais de desenvolvimento web, instalação de servidores e criação de sistemas customizados." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://farjdigital.com.br" />
-    <meta name="theme-color" content="#0066FF" />
-    <title>FARJ Digital - Desenvolvimento de Sites, Servidores e Sistemas</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/src/css/main.css" />
-  </head>
-  <body class="bg-white text-gray-900">
-    <!-- Navigation -->
-    <nav class="sticky top-0 bg-white shadow-md z-50">
-      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-          <img src="/assets/logos/logo-icon.svg" alt="FARJ Digital" class="h-8 w-8" />
-          <span class="text-xl font-bold text-blue-600">FARJ Digital</span>
-        </div>
-        <div class="hidden md:flex items-center space-x-6">
-          <a href="#servicos" class="hover:text-blue-600 transition">Serviços</a>
-          <a href="#contato" class="hover:text-blue-600 transition">Contato</a>
-          <a href="/admin" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Admin</a>
-        </div>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FARJ Digital — Desenvolvimento Web & Automação</title>
+  <meta name="description" content="Sites, sistemas, servidores e automações que impulsionam sua presença digital e geram resultados reais.">
+  <meta name="theme-color" content="#050d1f">
+  <meta property="og:title" content="FARJ Digital — Desenvolvimento Web & Automação">
+  <meta property="og:description" content="Sites, sistemas, servidores e automações que impulsionam sua presença digital.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #050d1f;
+      --blue: #0050c8;
+      --blue-light: #0080ff;
+      --blue-bright: #60aaff;
+      --blue-glow: rgba(0,128,255,0.12);
+      --bg: #f8f9fc;
+      --bg-alt: #f4f7ff;
+      --text: #1a1a2e;
+      --text-muted: #64748b;
+      --border: rgba(0,80,200,0.1);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 24px rgba(0,80,200,0.08);
+      --shadow-lg: 0 12px 48px rgba(0,80,200,0.14);
+    }
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
-      <div class="max-w-6xl mx-auto px-4 text-center">
-        <div class="mb-8">
-          <img src="/assets/logos/logo-dark.svg" alt="FARJ Digital" class="h-24 w-auto mx-auto mb-6" />
-        </div>
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Soluções Digitais Profissionais</h1>
-        <p class="text-xl text-blue-100 mb-8">
-          Desenvolvimento de sites, servidores, sistemas e landing pages personalizadas para sua empresa.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#servicos" class="bg-white text-blue-600 px-8 py-3 rounded font-semibold hover:bg-gray-100 transition">
-            Ver Serviços
-          </a>
-          <a href="#contato" class="bg-blue-400 text-white px-8 py-3 rounded font-semibold hover:bg-blue-500 transition">
-            Solicitar Orçamento
-          </a>
-        </div>
-      </div>
-    </section>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-    <!-- Services Section -->
-    <section id="servicos" class="py-20 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Nossos Serviços</h2>
-        <div id="servicos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Services will be loaded here by JavaScript -->
-          <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition animate-pulse">
-            <div class="h-8 bg-gray-200 rounded mb-4"></div>
-            <div class="h-4 bg-gray-200 rounded mb-4"></div>
-            <div class="h-6 bg-gray-300 rounded w-1/2"></div>
+    h1, h2, h3 { font-family: 'Syne', sans-serif; }
+    h1 { font-size: clamp(2.4rem, 5vw, 3.75rem); font-weight: 800; line-height: 1.1; }
+    h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; }
+    h3 { font-size: 1.05rem; font-weight: 700; }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--blue-bright) 0%, var(--blue-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-blue { color: var(--blue-light); }
+    .section { padding: 5rem 0; }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--blue-glow);
+      color: var(--blue-light);
+      border: 1px solid rgba(0,128,255,0.25);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header p {
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.8rem 1.75rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(0,80,200,0.3);
+      white-space: nowrap;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,80,200,0.4); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-full { width: 100%; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.8rem 1.75rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid rgba(255,255,255,0.28);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+
+    .btn-ai {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--blue);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid rgba(0,128,255,0.28);
+      border-radius: 100px;
+      background: rgba(0,128,255,0.06);
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.6rem;
+    }
+    .btn-ai:hover { background: rgba(0,128,255,0.12); color: var(--blue-light); }
+    .btn-ai:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(5,13,31,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 2px 32px rgba(0,0,0,0.3);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+    .logo-mark {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: white;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.72rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 0.25rem;
+      margin-left: auto;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.45rem 0.8rem;
+      border-radius: 7px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: white; background: rgba(255,255,255,0.1); }
+    .nav-cta {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.55rem 1.25rem;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+    .nav-cta:hover { background: var(--blue-light); transform: translateY(-1px); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0.4rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .nav-mobile {
+      background: rgba(5,13,31,0.98);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 0.75rem 1.5rem 1.25rem;
+    }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 0.15rem; }
+    .nav-mobile a {
+      display: block;
+      color: rgba(255,255,255,0.8);
+      padding: 0.6rem 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-mobile a:hover { color: white; background: rgba(255,255,255,0.08); }
+
+    /* Hero */
+    .hero {
+      background: var(--navy);
+      color: white;
+      min-height: 100vh;
+      padding: 7rem 1.5rem 5rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 65% 50%, rgba(0,80,200,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,128,255,0.12);
+      border: 1px solid rgba(0,128,255,0.3);
+      color: var(--blue-bright);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title { margin-bottom: 1.25rem; color: white; }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 460px;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .hero-stats { display: flex; align-items: center; gap: 1.75rem; }
+    .stat strong {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--blue-bright), var(--blue-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat span { font-size: 0.76rem; color: rgba(255,255,255,0.45); white-space: nowrap; }
+    .stat-divider { width: 1px; height: 2rem; background: rgba(255,255,255,0.12); }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .particles-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-orbit {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(0,128,255,0.2);
+      pointer-events: none;
+    }
+    .orbit-1 {
+      width: 240px;
+      height: 240px;
+      animation: orbit-spin 22s linear infinite;
+    }
+    .orbit-1::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--blue-bright);
+      border-radius: 50%;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px var(--blue-bright);
+    }
+    .orbit-2 {
+      width: 350px;
+      height: 350px;
+      animation: orbit-spin 35s linear infinite reverse;
+      border-style: dashed;
+      border-color: rgba(0,128,255,0.12);
+    }
+    .orbit-2::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: rgba(96,170,255,0.7);
+      border-radius: 50%;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    @keyframes orbit-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .hero-rocket {
+      position: relative;
+      z-index: 2;
+      font-size: 3.5rem;
+      animation: float 3.2s ease-in-out infinite;
+      filter: drop-shadow(0 0 28px rgba(0,128,255,0.5));
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-20deg); }
+      50% { transform: translateY(-18px) rotate(-20deg); }
+    }
+    .hero-glow {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(0,128,255,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      animation: glow-pulse 3.2s ease-in-out infinite;
+    }
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    /* Services */
+    .services-section { background: var(--bg-alt); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 100%);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(0,128,255,0.18); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon-wrap {
+      width: 3rem;
+      height: 3rem;
+      background: var(--bg-alt);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      transition: transform 0.25s;
+    }
+    .service-card:hover .service-icon-wrap { transform: scale(1.08); }
+    .service-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .service-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1.25rem; }
+    .service-cta {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .service-card:hover .service-cta { gap: 0.6rem; color: var(--blue-light); }
+    .service-skeleton {
+      background: linear-gradient(90deg, #e9edf5 25%, #f0f3fa 50%, #e9edf5 75%);
+      background-size: 200% 100%;
+      border-radius: var(--radius);
+      height: 190px;
+      animation: shimmer 1.8s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Process */
+    .process-section { background: white; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 3.25rem;
+      left: calc(12.5% + 0.5rem);
+      right: calc(12.5% + 0.5rem);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,128,255,0.2) 20%, rgba(0,128,255,0.2) 80%, transparent);
+      z-index: 0;
+    }
+    .process-step { text-align: center; padding: 1.5rem 1rem; position: relative; z-index: 1; }
+    .step-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--blue-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+    .step-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .process-step h3 { margin-bottom: 0.6rem; color: var(--text); }
+    .process-step p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* Contact */
+    .contact-section { background: var(--bg-alt); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 1rem; }
+    .contact-info > p { color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .contact-link:hover { border-color: rgba(0,128,255,0.25); box-shadow: var(--shadow); transform: translateX(3px); }
+    .contact-link-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--bg-alt);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-link strong { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.1rem; }
+    .contact-link span { font-size: 0.82rem; color: var(--text-muted); }
+
+    /* Forms */
+    .contact-form, .modal-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(0,80,200,0.15);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      background: white;
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      resize: vertical;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--blue-light);
+      box-shadow: 0 0 0 3px rgba(0,128,255,0.1);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0b9cc; }
+    .form-status {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .form-status.success { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+    .form-status.error { background: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+
+    /* Footer */
+    .footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.65);
+      padding: 4rem 0 2rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo { margin-bottom: 0.85rem; }
+    .footer-brand p { font-size: 0.88rem; max-width: 260px; line-height: 1.65; }
+    .footer-links h4 {
+      font-family: 'Syne', sans-serif;
+      color: white;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-links a { font-size: 0.88rem; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p { font-size: 0.82rem; }
+    .admin-link { font-size: 0.78rem; color: rgba(255,255,255,0.28); transition: color 0.2s; }
+    .admin-link:hover { color: rgba(255,255,255,0.65); }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,13,31,0.65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2rem;
+      height: 2rem;
+      background: var(--bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: rgba(0,80,200,0.1); color: var(--blue); }
+    .modal-header { text-align: center; margin-bottom: 1.5rem; padding-right: 1.5rem; }
+    .modal-service-icon { font-size: 2.5rem; margin-bottom: 0.6rem; line-height: 1; }
+    .modal-header h3 { font-family: 'Syne', sans-serif; font-size: 1.25rem; margin-bottom: 0.25rem; }
+    .modal-service-label { font-size: 0.82rem; color: var(--blue); font-weight: 600; }
+
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+      transition-delay: var(--delay, 0ms);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .contact-grid { gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-visual { height: 280px; }
+      .orbit-1 { width: 170px; height: 170px; }
+      .orbit-2 { width: 250px; height: 250px; }
+      .hero-rocket { font-size: 2.5rem; }
+      .hero-stats { flex-wrap: wrap; gap: 1.25rem; }
+      .stat-divider { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-brand { grid-column: unset; }
+      .section { padding: 3.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#inicio" class="nav-logo">
+        <span class="logo-mark">FD</span>
+        FARJ Digital
+      </a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#processo">Processo</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a href="#contato" class="nav-cta">Falar com a gente</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile" hidden>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#processo">Processo</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">⚡ Soluções digitais que decolam</div>
+          <h1 class="hero-title">
+            Sua ideia<br>
+            <span class="gradient-text">vai decolar</span>
+          </h1>
+          <p class="hero-desc">
+            Desenvolvemos sites, sistemas e automações que transformam sua presença digital e impulsionam seus resultados.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" id="hero-cta">Ver Serviços</button>
+            <a class="btn-ghost" id="whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contato" class="py-20 bg-white">
-      <div class="max-w-2xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Entre em Contato</h2>
-        <form id="contact-form" class="space-y-6">
-          <div>
-            <label for="nome" class="block text-sm font-semibold mb-2">Nome</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-              placeholder="Seu nome"
-            />
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-semibold mb-2">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-              placeholder="seu@email.com"
-            />
-          </div>
-          <div>
-            <label for="mensagem" class="block text-sm font-semibold mb-2">Mensagem</label>
-            <textarea
-              id="mensagem"
-              name="mensagem"
-              required
-              rows="5"
-              class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-              placeholder="Descreva seu projeto..."
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            class="w-full bg-blue-600 text-white py-3 rounded font-semibold hover:bg-blue-700 transition"
-          >
-            Enviar Mensagem
-          </button>
-          <div id="form-status" class="hidden mt-4 p-4 rounded text-sm"></div>
-        </form>
-
-        <!-- WhatsApp CTA -->
-        <div class="mt-12 text-center">
-          <p class="text-gray-600 mb-4">Preferir falar direto no WhatsApp?</p>
-          <a
-            id="whatsapp-btn"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block bg-green-500 text-white px-6 py-3 rounded font-semibold hover:bg-green-600 transition"
-          >
-            💬 WhatsApp
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <div class="flex items-center space-x-2 mb-4">
-              <img src="/assets/logos/logo-light.svg" alt="FARJ Digital" class="h-8 w-8" />
-              <span class="text-xl font-bold">FARJ Digital</span>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>+50</strong>
+              <span>Projetos entregues</span>
             </div>
-            <p class="text-gray-400">Soluções digitais profissionais para sua empresa.</p>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Links</h3>
-            <ul class="space-y-2 text-gray-400">
-              <li><a href="#servicos" class="hover:text-white transition">Serviços</a></li>
-              <li><a href="#contato" class="hover:text-white transition">Contato</a></li>
-              <li><a href="/admin" class="hover:text-white transition">Admin</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Contato</h3>
-            <p class="text-gray-400">
-              Email: <a href="mailto:contato@farjdigital.com.br" class="hover:text-white transition">contato@farjdigital.com.br</a>
-            </p>
-            <p class="text-gray-400 mt-2">
-              WhatsApp: <a id="footer-whatsapp" href="#" target="_blank" class="hover:text-white transition">(55) XXXX-XXXX</a>
-            </p>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Satisfação garantida</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <strong>24h</strong>
+              <span>Suporte disponível</span>
+            </div>
           </div>
         </div>
-        <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-          <p>&copy; 2026 FARJ Digital. Todos os direitos reservados.</p>
+        <div class="hero-visual">
+          <canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
+          <div class="hero-glow" aria-hidden="true"></div>
+          <div class="hero-orbit orbit-1" aria-hidden="true"></div>
+          <div class="hero-orbit orbit-2" aria-hidden="true"></div>
+          <div class="hero-rocket" aria-hidden="true">🚀</div>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <!-- Scripts -->
-    <script src="/src/js/main.js" type="module"></script>
-  </body>
+    <section id="servicos" class="section services-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">O que fazemos</div>
+          <h2>Nossos <span class="text-blue">Serviços</span></h2>
+          <p>Soluções completas para transformar sua presença digital e acelerar seu negócio</p>
+        </div>
+        <div class="services-grid" id="servicos-container">
+          <div class="service-skeleton"></div>
+          <div class="service-skeleton"></div>
+          <div class="service-skeleton"></div>
+          <div class="service-skeleton"></div>
+          <div class="service-skeleton"></div>
+          <div class="service-skeleton"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="processo" class="section process-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Como trabalhamos</div>
+          <h2>Seu projeto em <span class="text-blue">4 etapas</span></h2>
+          <p>Um processo claro e transparente do briefing à entrega</p>
+        </div>
+        <div class="process-steps">
+          <div class="process-step reveal" style="--delay:0ms">
+            <div class="step-number">01</div>
+            <span class="step-icon">🔍</span>
+            <h3>Briefing</h3>
+            <p>Entendemos sua visão, objetivos e necessidades. Fazemos as perguntas certas para que o projeto esteja alinhado com seu negócio.</p>
+          </div>
+          <div class="process-step reveal" style="--delay:100ms">
+            <div class="step-number">02</div>
+            <span class="step-icon">📐</span>
+            <h3>Planejamento</h3>
+            <p>Criamos um plano detalhado com cronograma e arquitetura. Você aprova tudo antes de começarmos a desenvolver.</p>
+          </div>
+          <div class="process-step reveal" style="--delay:200ms">
+            <div class="step-number">03</div>
+            <span class="step-icon">⚙️</span>
+            <h3>Desenvolvimento</h3>
+            <p>Código limpo e boas práticas. Você acompanha o progresso com acesso a previews semanais ao longo do projeto.</p>
+          </div>
+          <div class="process-step reveal" style="--delay:300ms">
+            <div class="step-number">04</div>
+            <span class="step-icon">🚀</span>
+            <h3>Entrega & Suporte</h3>
+            <p>Lançamos com suporte completo, treinamento e acompanhamento pós-entrega para garantir seu sucesso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="section contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <div class="section-tag">Fale conosco</div>
+            <h2>Vamos construir<br><span class="text-blue">algo incrível?</span></h2>
+            <p>Preencha o formulário ou nos chame pelo WhatsApp. Respondemos em até 2 horas em dias úteis.</p>
+            <div class="contact-links">
+              <a id="contact-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <span class="contact-link-icon">💬</span>
+                <div>
+                  <strong>WhatsApp</strong>
+                  <span id="footer-whatsapp">+55 (XX) XXXXX-XXXX</span>
+                </div>
+              </a>
+              <a href="mailto:tech.farjdigital@gmail.com" class="contact-link">
+                <span class="contact-link-icon">📧</span>
+                <div>
+                  <strong>E-mail</strong>
+                  <span>tech.farjdigital@gmail.com</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="contact-form-wrap reveal" style="--delay:100ms">
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="nome">Seu nome</label>
+                <input type="text" id="nome" name="nome" placeholder="João Silva" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="joao@empresa.com" required autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conta um pouco sobre seu projeto..." required></textarea>
+              </div>
+              <div id="form-status" class="form-status" hidden></div>
+              <button type="submit" class="btn-primary btn-full">Enviar Mensagem</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#inicio" class="nav-logo">
+            <span class="logo-mark">FD</span>
+            FARJ Digital
+          </a>
+          <p>Transformando ideias em soluções digitais que geram resultados reais para o seu negócio.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#processo">Processo</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos">Desenvolvimento Web</a></li>
+            <li><a href="#servicos">Servidores</a></li>
+            <li><a href="#servicos">Sistemas</a></li>
+            <li><a href="#servicos">Automações</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 FARJ Digital. Todos os direitos reservados.</p>
+        <a href="/admin" class="admin-link">Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quote Modal -->
+  <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Fechar modal">✕</button>
+      <div class="modal-header">
+        <div class="modal-service-icon" id="modal-service-icon" aria-hidden="true">🌐</div>
+        <h3 id="modal-title">Solicitar Orçamento</h3>
+        <p class="modal-service-label" id="modal-service-name">Serviço</p>
+      </div>
+      <form id="quote-form" class="modal-form" novalidate>
+        <input type="hidden" id="quote-service-id" name="service_id" value="">
+        <div class="form-group">
+          <label for="quote-nome">Seu nome</label>
+          <input type="text" id="quote-nome" name="nome" placeholder="João Silva" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="quote-numero">WhatsApp</label>
+          <input type="tel" id="quote-numero" name="numero" placeholder="+55 (11) 99999-9999" required autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label for="quote-ideia">Descreva sua ideia</label>
+          <textarea id="quote-ideia" name="ideia" rows="4" placeholder="Conte um pouco sobre o que você precisa..." required></textarea>
+          <button type="button" id="ai-improve-btn" class="btn-ai">✨ Melhorar com IA</button>
+        </div>
+        <div id="quote-status" class="form-status" hidden></div>
+        <button type="submit" class="btn-primary btn-full">Enviar Solicitação</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/src/js/main.js" type="module"></script>
+</body>
 </html>

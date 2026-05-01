@@ -13,6 +13,7 @@ import { initializeMailer } from './controllers/contactController.js';
 import authRoutes from './routes/auth.js';
 import contactRoutes from './routes/contact.js';
 import adminRoutes from './routes/admin.js';
+import aiRoutes from './routes/ai.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -110,6 +111,35 @@ passport.deserializeUser(async (email, done) => {
   }
 });
 
+// Lazy DB initialization — safe for both serverless and long-running processes
+let _initPromise = null;
+function ensureReady() {
+  if (!_initPromise) {
+    _initPromise = initDatabase()
+      .then(() => {
+        if (config.emailUser && config.emailPass) {
+          initializeMailer();
+          console.log('✓ Email configured');
+        }
+      })
+      .catch((err) => {
+        console.error('Initialization error:', err);
+        _initPromise = null; // allow retry on next request
+        throw err;
+      });
+  }
+  return _initPromise;
+}
+
+app.use(async (req, res, next) => {
+  try {
+    await ensureReady();
+    next();
+  } catch {
+    res.status(503).json({ message: 'Service initializing, try again shortly' });
+  }
+});
+
 // Static files
 app.use(express.static(config.publicDir));
 app.use('/admin', express.static(config.adminDir));
@@ -120,6 +150,12 @@ app.use('/src', express.static(config.srcDir));
 app.use('/auth', authRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/ai', aiRoutes);
+
+// Public API: WhatsApp number
+app.get('/api/whatsapp', (req, res) => {
+  res.json({ number: config.whatsappNumber });
+});
 
 // Public API: GET services
 app.get('/api/services', async (req, res) => {
@@ -161,33 +197,19 @@ app.use((error, req, res, next) => {
   });
 });
 
-// Initialize and start server
-async function startServer() {
-  try {
-    // Initialize database
-    await initDatabase();
-
-    // Initialize mailer
-    if (config.emailUser && config.emailPass) {
-      initializeMailer();
-      console.log('✓ Email configured');
-    } else {
-      console.warn('⚠ Email not configured - contact form will not send emails');
-    }
-
-    // Start listening
+// Start HTTP server
+ensureReady()
+  .then(() => {
     app.listen(config.port, () => {
       console.log(`\n✓ Server running on http://localhost:${config.port}`);
       console.log(`  Landing page: http://localhost:${config.port}`);
       console.log(`  Admin: http://localhost:${config.port}/admin`);
-      console.log(`\n${config.nodeEnv === 'development' ? '🔄 Dev mode - server will restart on changes' : '🚀 Production mode'}\n`);
+      console.log(`\n${config.nodeEnv === 'development' ? '🔄 Dev mode' : '🚀 Production mode'}\n`);
     });
-  } catch (error) {
-    console.error('Failed to start server:', error);
+  })
+  .catch((err) => {
+    console.error('Failed to start server:', err);
     process.exit(1);
-  }
-}
-
-startServer();
+  });
 
 export default app;

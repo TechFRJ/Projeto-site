@@ -17,6 +17,10 @@ export const config = {
   dbPath: process.env.DB_PATH || path.join(rootDir, 'database.sqlite3'),
   mongodbUri: process.env.MONGODB_URI,
 
+  // AI (Anthropic)
+  anthropicApiKey: process.env.ANTHROPIC_API_KEY,
+  aiApiUrl: process.env.AI_API_URL || 'https://api.anthropic.com',
+
   // OAuth - Google
   googleClientId: process.env.GOOGLE_CLIENT_ID,
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -48,20 +52,15 @@ export const config = {
   srcDir: path.join(rootDir, 'src'),
 };
 
-// Validate critical config
+// Validate critical config — warns but never throws (allows partial deploys)
 export function validateConfig() {
-  const isDev = config.nodeEnv === 'development';
-
-  if (!isDev) {
-    if (!config.googleClientId || !config.googleClientSecret) {
-      throw new Error('GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET are required in production');
-    }
-    if (!config.emailUser || !config.emailPass) {
-      throw new Error('EMAIL_USER and EMAIL_PASS are required in production');
-    }
+  if (!config.googleClientId || !config.googleClientSecret) {
+    console.warn('⚠ Google OAuth not configured — admin login unavailable');
   }
-
+  if (!config.emailUser || !config.emailPass) {
+    console.warn('⚠ Email not configured — contact form will not send emails');
+  }
   console.log(`✓ Configuration loaded (${config.nodeEnv})`);
-  console.log(`  Database: ${config.dbType}`);
+  console.log(`  Database: ${config.dbType} → ${config.dbPath}`);
   console.log(`  Port: ${config.port}`);
 }
