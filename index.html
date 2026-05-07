@@ -1,23 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sobre Mim</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(160deg, #0b1120, #111827);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        p {
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        h2 {
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        ul {
+            list-style: none;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        li {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 0.65rem 0.8rem;
+            border-radius: 8px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .cta a {
+            display: inline-block;
+            margin-top: 1rem;
+            text-decoration: none;
+            background: var(--accent);
+            color: #0f172a;
+            font-weight: bold;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <header>
-            <h1>Titulo do site</h1>
+    <main class="container">
+        <header class="card">
+            <h1>Olá! Eu sou <span class="highlight">Seu Nome</span>.</h1>
+            <p>Sou uma pessoa curiosa, criativa e apaixonada por transformar ideias em projetos reais. Este site foi criado para apresentar um pouco sobre mim, minhas habilidades e meus objetivos.</p>
         </header>
-        <article>
-            <h2>Titulo 2</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse repudiandae quae commodi? Nulla iste ex eius culpa laborum debitis excepturi esse corrupti aliquid ad, veniam, voluptatibus aliquam. Obcaecati, id illum.</p>
-        </article>
-        <article>
-            <h3>Titulo 3</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, quisquam voluptatum aspernatur et recusandae asperiores earum ullam similique laborum amet esse quidem ex nulla iste perferendis debitis repudiandae atque minima.</p>
-        </article>
+
+        <section class="card">
+            <h2>Sobre mim</h2>
+            <p>Tenho interesse em tecnologia, design e aprendizado contínuo. Gosto de desafios que me façam crescer e acredito que colaboração é a melhor forma de criar algo incrível.</p>
+        </section>
+
+        <section class="card">
+            <h2>Minhas habilidades</h2>
+            <ul>
+                <li>✅ Comunicação e trabalho em equipe</li>
+                <li>✅ Organização e foco em resultados</li>
+                <li>✅ Criatividade para resolver problemas</li>
+                <li>✅ Vontade constante de aprender</li>
+            </ul>
+        </section>
+
+        <section class="card cta">
+            <h2>Vamos conversar?</h2>
+            <p>Se você quiser trocar ideias, iniciar um projeto ou apenas dizer oi, ficarei feliz em conversar com você.</p>
+            <a href="mailto:seuemail@exemplo.com">Entrar em contato</a>
+        </section>
     </main>
 </body>
 </html>
