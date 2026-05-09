@@ -1,0 +1,13 @@
+{
+  "name": "FARJ Digital",
+  "short_name": "FARJ",
+  "description": "Desenvolvimento de sites, sistemas e landing pages",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#050d1f",
+  "background_color": "#f8f9fc",
+  "display": "standalone",
+  "start_url": "/"
+}

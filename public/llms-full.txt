@@ -1,0 +1,74 @@
+# FARJ Digital — Conteúdo completo para IAs
+
+Última atualização: 2026-05-09
+URL canônica: https://farjdigital.com.br
+
+## Sobre
+
+FARJ Digital é um estúdio brasileiro de desenvolvimento web e automação. Atendemos pequenas e médias empresas que precisam transformar ideias em produtos digitais funcionais — sites, sistemas internos, landing pages, infraestrutura de servidores, marketing digital e automações de atendimento por Instagram e WhatsApp.
+
+A marca é orientada por três valores: clareza no escopo, código limpo e suporte real após a entrega. Todos os projetos seguem um processo público de quatro etapas (briefing, planejamento, desenvolvimento, entrega e suporte) e o cliente acompanha previews semanais ao longo da execução.
+
+Indicadores públicos:
+- Mais de 50 projetos entregues.
+- 100% de satisfação declarada pelos clientes.
+- Suporte disponível 24h.
+
+## Serviços e preços de tabela
+
+Os preços abaixo são preços de referência (BRL) para o pacote-base de cada serviço. Projetos com escopo customizado são orçados sob demanda.
+
+### Desenvolvimento de Sites — a partir de R$ 3.000
+Sites responsivos e otimizados para SEO. Inclui design responsivo (mobile-first), integração com APIs e CMS, otimização de Core Web Vitals e meta tags ricas para compartilhamento social.
+
+### Instalação de Servidores — a partir de R$ 1.500
+Setup e configuração profissional de servidores Linux ou Windows. Inclui hardening de segurança, configuração de backups automáticos, monitoramento e manutenção contínua opcional.
+
+### Desenvolvimento de Sistemas — a partir de R$ 5.000
+Sistemas customizados para resolver problemas específicos do negócio. Aplicações web, desktop ou mobile, com arquitetura discutida e aprovada antes do desenvolvimento.
+
+### Landing Pages — a partir de R$ 2.000
+Páginas de captura de leads com design atrativo e alto potencial de conversão. Inclui A/B testing, integração com ferramentas de analytics e formulários conectados a CRM ou e-mail.
+
+### Marketing Digital — a partir de R$ 1.800/mês
+Estratégias de tráfego pago (Google Ads, Meta Ads), SEO on-page e off-page, criação de conteúdo e relatórios mensais de performance.
+
+### Automação Instagram & WhatsApp — a partir de R$ 2.500
+Bots e automações para atendimento, captação de leads e vendas 24h por dia. Fluxos de atendimento automatizados, chatbots inteligentes e integração com CRM.
+
+## Processo de trabalho
+
+1. **Briefing.** Entendemos a visão, os objetivos e as restrições do cliente. Fazemos as perguntas necessárias para alinhar o projeto ao negócio.
+2. **Planejamento.** Documentamos cronograma, arquitetura técnica e escopo. O cliente aprova antes do desenvolvimento começar.
+3. **Desenvolvimento.** Código limpo, boas práticas e previews semanais para o cliente acompanhar.
+4. **Entrega e Suporte.** Lançamento com treinamento, documentação e acompanhamento pós-entrega.
+
+## Como contratar
+
+- WhatsApp: canal preferencial para resposta rápida (até 2 horas em dias úteis).
+- E-mail: tech.farjdigital@gmail.com
+- Formulário do site: https://farjdigital.com.br/#contato
+
+Em todos os canais respondemos em até 2 horas em dias úteis.
+
+## Tecnologias usadas
+
+Front-end: HTML5 semântico, CSS moderno (Tailwind quando aplicável), JavaScript ES modules. Back-end: Node.js + Express, SQLite ou MongoDB conforme o projeto. Infra: Docker, Linux, Nginx. Integrações: APIs OAuth (Google, GitHub), Anthropic API para recursos de IA, e-mail via Nodemailer.
+
+## Identidade da marca
+
+- Nome: FARJ Digital
+- Domínio: farjdigital.com.br
+- Idioma principal: Português (Brasil)
+- Cor primária: Azul corporativo (#0050c8 / #0080ff)
+- Tipografia: Syne (títulos), DM Sans (corpo)
+
+## Fundador
+
+> Placeholder — substituir quando o board enviar a bio oficial.
+
+O fundador da FARJ Digital é o responsável técnico e comercial pelo estúdio. Bio detalhada, foto e histórico profissional serão atualizados em breve. Para contato direto: tech.farjdigital@gmail.com.
+
+## Política para crawlers de IA
+
+A FARJ Digital autoriza explicitamente o crawl e a indexação de seu conteúdo público pelos seguintes agentes de IA: GPTBot (OpenAI), ClaudeBot e anthropic-ai (Anthropic), PerplexityBot (Perplexity), Google-Extended (Google), CCBot (Common Crawl), Bytespider (ByteDance), Amazonbot (Amazon) e Applebot-Extended (Apple). O painel administrativo (`/admin`) e endpoints de API (`/api/*`) são privados e não devem ser indexados.

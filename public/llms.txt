@@ -1,0 +1,32 @@
+# FARJ Digital
+
+> Estúdio brasileiro de desenvolvimento web e automação. Construímos sites, sistemas, servidores e automações que impulsionam a presença digital de pequenas e médias empresas e geram resultados mensuráveis.
+
+FARJ Digital atende clientes em português (Brasil). O contato comercial principal é por WhatsApp e e-mail. O site é uma single-page com seções públicas e um painel administrativo protegido por OAuth (não-indexável).
+
+## Principais seções
+
+- [Início](https://farjdigital.com.br/#inicio): apresentação da marca, proposta de valor e indicadores.
+- [Serviços](https://farjdigital.com.br/#servicos): catálogo de serviços com preços a partir de R$ — atualizado dinamicamente via API.
+- [Processo](https://farjdigital.com.br/#processo): briefing → planejamento → desenvolvimento → entrega e suporte.
+- [Contato](https://farjdigital.com.br/#contato): formulário direto e canais de WhatsApp e e-mail.
+
+## Serviços oferecidos
+
+- Desenvolvimento de Sites — sites responsivos e otimizados para SEO.
+- Instalação de Servidores — setup, segurança, backups e manutenção.
+- Desenvolvimento de Sistemas — sistemas web, desktop e mobile sob medida.
+- Landing Pages — páginas de conversão com A/B testing.
+- Marketing Digital — tráfego pago, SEO e conteúdo.
+- Automação Instagram & WhatsApp — chatbots e fluxos de atendimento 24/7.
+
+## Recursos para IAs e bots
+
+- [llms-full.txt](https://farjdigital.com.br/llms-full.txt): conteúdo completo em texto puro para indexação por LLMs.
+- [sitemap.xml](https://farjdigital.com.br/sitemap.xml): sitemap das páginas públicas.
+- [robots.txt](https://farjdigital.com.br/robots.txt): política de crawl, com bots de IA explicitamente liberados.
+
+## Contato
+
+- E-mail: tech.farjdigital@gmail.com
+- Site: https://farjdigital.com.br
