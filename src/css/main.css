@@ -167,3 +167,32 @@ textarea:focus-visible {
 @media (prefers-color-scheme: dark) {
   /* Styles for dark mode can be added here */
 }
+
+/* Lucide icons — both inline SVG (.lucide-icon) and CDN-generated (.lucide) */
+.lucide-icon,
+svg.lucide {
+  display: inline-block;
+  width: 1em !important;
+  height: 1em !important;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+
+.service-icon-wrap .lucide-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.service-cta .lucide-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.25rem;
+}
+
+.lucide-spin {
+  animation: lucide-spin 1s linear infinite;
+}
+
+@keyframes lucide-spin {
+  to { transform: rotate(360deg); }
+}

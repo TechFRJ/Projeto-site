@@ -6,6 +6,7 @@
     <meta name="description" content="FARJ Digital - Painel Administrativo" />
     <title>Admin - FARJ Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body class="bg-gray-100">
     <div id="auth-check" class="flex items-center justify-center h-screen">
@@ -24,7 +25,8 @@
             <span class="text-gray-400">|</span>
             <span id="user-email" class="text-sm text-gray-400">Carregando...</span>
           </div>
-          <a href="/auth/logout" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition">
+          <a href="/auth/logout" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition inline-flex items-center gap-2">
+            <i data-lucide="log-out" class="w-4 h-4"></i>
             Sair
           </a>
         </div>
@@ -57,8 +59,9 @@
 
         <!-- Add Service Button (future feature) -->
         <div class="mt-8">
-          <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded transition" disabled title="Funcionalidade em desenvolvimento">
-            + Adicionar Novo Serviço
+          <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded transition inline-flex items-center gap-2" disabled title="Funcionalidade em desenvolvimento">
+            <i data-lucide="plus-circle" class="w-5 h-5"></i>
+            Adicionar Novo Serviço
           </button>
           <p class="text-sm text-gray-500 mt-2">Funcionalidade em desenvolvimento</p>
         </div>
@@ -70,7 +73,9 @@
       <div class="bg-white rounded-lg shadow-lg max-w-md w-full">
         <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <h3 class="text-xl font-bold">Editar Serviço</h3>
-          <button id="modal-close" class="text-gray-400 hover:text-gray-600">✕</button>
+          <button id="modal-close" class="text-gray-400 hover:text-gray-600" aria-label="Fechar">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
         </div>
 
         <form id="edit-form" class="px-6 py-4 space-y-4">
@@ -140,5 +145,10 @@
 
     <script src="/admin/js/auth-check.js"></script>
     <script src="/admin/js/admin.js"></script>
+    <script>
+      lucide.createIcons();
+      // Re-render Lucide icons after dynamic content (table rows, etc.) is injected
+      window.refreshIcons = () => lucide.createIcons();
+    </script>
   </body>
 </html>

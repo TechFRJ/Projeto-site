@@ -1,0 +1,5 @@
+# Permitir bots legítimos (Google, Claude, etc.)
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_USER_AGENT} ^$ [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
