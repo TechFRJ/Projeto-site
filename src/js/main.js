@@ -1,61 +1,85 @@
 // Particle constellation animation in hero canvas
 function initParticles() {
   const canvas = document.getElementById('particles-canvas');
-  if (!canvas) return;
+  const hero = document.getElementById('inicio');
+  if (!canvas || !hero) return;
   const ctx = canvas.getContext('2d');
 
+  const STAR_COUNT = window.innerWidth < 768 ? 40 : 100;
+  const LINK_DIST = 110;
+  let stars = [];
+  let dpr = Math.max(1, window.devicePixelRatio || 1);
+
   function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    const r = hero.getBoundingClientRect();
+    canvas.width = r.width * dpr;
+    canvas.height = r.height * dpr;
+    canvas.style.width = r.width + 'px';
+    canvas.style.height = r.height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
-  resize();
-  window.addEventListener('resize', resize);
 
-  const count = 50;
-  const particles = Array.from({ length: count }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.35,
-    vy: (Math.random() - 0.5) * 0.35,
-    r: Math.random() * 1.8 + 0.8,
-    opacity: Math.random() * 0.5 + 0.25,
-  }));
+  function spawn() {
+    const r = hero.getBoundingClientRect();
+    stars = Array.from({ length: STAR_COUNT }, () => ({
+      x: Math.random() * r.width,
+      y: Math.random() * r.height,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.18,
+      r: Math.random() * 1.4 + 0.4,
+      tw: Math.random() * Math.PI * 2,           // fase do twinkle
+    }));
+  }
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 110) {
-          ctx.strokeStyle = `rgba(96,170,255,${0.28 * (1 - dist / 110)})`;
-          ctx.lineWidth = 0.5;
+  function drawFrame() {
+    const r = hero.getBoundingClientRect();
+    ctx.clearRect(0, 0, r.width, r.height);
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        const dx = stars[i].x - stars[j].x;
+        const dy = stars[i].y - stars[j].y;
+        const d = Math.hypot(dx, dy);
+        if (d < LINK_DIST) {
+          ctx.strokeStyle = `rgba(96,170,255,${0.18 * (1 - d / LINK_DIST)})`;
+          ctx.lineWidth = 0.6;
           ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.moveTo(stars[i].x, stars[i].y);
+          ctx.lineTo(stars[j].x, stars[j].y);
           ctx.stroke();
         }
       }
     }
-
-    for (const p of particles) {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(96,170,255,${p.opacity})`;
-      ctx.fill();
-
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    for (const s of stars) {
+      const alpha = 0.55 + Math.sin(s.tw) * 0.35;
+      ctx.fillStyle = `rgba(180,210,255,${alpha})`;
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
     }
-
-    requestAnimationFrame(draw);
   }
 
-  draw();
+  function tick() {
+    for (const s of stars) {
+      s.x += s.vx; s.y += s.vy; s.tw += 0.03;
+      const r = hero.getBoundingClientRect();
+      if (s.x < 0 || s.x > r.width)  s.vx *= -1;
+      if (s.y < 0 || s.y > r.height) s.vy *= -1;
+    }
+    drawFrame();
+    raf = requestAnimationFrame(tick);
+  }
+
+  let raf;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  resize(); spawn();
+  if (reduced) drawFrame(); else tick();
+
+  addEventListener('resize', () => {
+    resize();
+    const r = hero.getBoundingClientRect();
+    for (const s of stars) {
+      s.x = Math.min(s.x, r.width);
+      s.y = Math.min(s.y, r.height);
+    }
+  });
 }
 
 // Scroll-based reveal with IntersectionObserver

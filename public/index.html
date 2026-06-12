@@ -81,9 +81,9 @@
       {
         "@type": "Person",
         "@id": "https://farjdigital.com.br/#founder",
-        "name": "Fundador FARJ Digital",
-        "jobTitle": "Fundador & Lead Developer",
-        "description": "Placeholder — bio oficial do fundador será publicada quando enviada pelo board.",
+        "name": "Fernando",
+        "jobTitle": "Desenvolvedor Web Full-stack & Fundador",
+        "description": "Desenvolvedor web freelancer com foco em sites, sistemas e automações para empresas no Brasil. Código limpo, performance e processo claro do briefing ao deploy.",
         "worksFor": { "@id": "https://farjdigital.com.br/#organization" },
         "url": "https://farjdigital.com.br/"
       },
@@ -464,6 +464,7 @@
       align-items: center;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
     }
     .hero::before {
       content: '';
@@ -471,6 +472,7 @@
       inset: 0;
       background: radial-gradient(ellipse 70% 60% at 65% 50%, rgba(0,80,200,0.18) 0%, transparent 70%);
       pointer-events: none;
+      z-index: 0;
     }
     .hero-inner {
       max-width: 1180px;
@@ -480,6 +482,8 @@
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
     .hero-badge {
       display: inline-flex;
@@ -525,12 +529,17 @@
       align-items: center;
       justify-content: center;
     }
-    .particles-canvas {
+    .hero-stars {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
+      z-index: 0;
+      pointer-events: none;
     }
+    .hero-inner { position: relative; z-index: 2; }
+    .hero::before { z-index: 1; }              /* gradiente radial existente acima das estrelas */
+
     .hero-orbit {
       position: absolute;
       border-radius: 50%;
@@ -601,6 +610,124 @@
       0%, 100% { opacity: 0.6; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.1); }
     }
+
+    /* Works (Portfólio) */
+    .works-section { background: var(--bg-alt); }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .work-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .work-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0,128,255,0.18);
+    }
+    .work-link { display: block; color: inherit; }
+    .work-thumb {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--bg-alt);
+    }
+    .work-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .work-card:hover .work-thumb img { transform: scale(1.04); }
+    .work-body { padding: 1.5rem; }
+    .work-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      background: var(--blue-glow);
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+    }
+    .work-body h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .work-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .work-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      transition: gap 0.2s, color 0.2s;
+    }
+    .work-card:hover .work-cta { gap: 0.6rem; color: var(--blue-light); }
+    .work-cta i { font-size: 1rem; }
+
+    /* About Me */
+    .about-section { background: white; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-photo-frame {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4 / 5;
+    }
+    .about-photo-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-photo-glow {
+      position: absolute;
+      inset: -20% -20% auto auto;
+      width: 60%; height: 60%;
+      background: radial-gradient(circle, rgba(0,128,255,0.35), transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .about-lead {
+      font-size: 1.15rem;
+      color: var(--text);
+      margin: 0.75rem 0 1rem;
+      font-weight: 500;
+    }
+    .about-content > p { color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.7; }
+    .about-skills {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem 1.25rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .about-skills li {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.92rem; color: var(--text);
+      font-weight: 500;
+    }
+    .about-skills i { color: var(--blue-light); }
 
     /* Services */
     .services-section { background: var(--bg-alt); }
@@ -913,7 +1040,9 @@
       <ul class="nav-links">
         <li><a href="#inicio">Início</a></li>
         <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#trabalhos">Trabalhos</a></li>
         <li><a href="#processo">Processo</a></li>
+        <li><a href="#sobre">Sobre</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
       <a href="#contato" class="nav-cta">Falar com a gente</a>
@@ -925,7 +1054,9 @@
       <ul>
         <li><a href="#inicio">Início</a></li>
         <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#trabalhos">Trabalhos</a></li>
         <li><a href="#processo">Processo</a></li>
+        <li><a href="#sobre">Sobre</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </div>
@@ -933,6 +1064,7 @@
 
   <main>
     <section id="inicio" class="hero">
+      <canvas id="particles-canvas" class="hero-stars" aria-hidden="true"></canvas>
       <div class="hero-inner">
         <div class="hero-content">
           <div class="hero-badge"><i data-lucide="zap"></i> Soluções digitais que decolam</div>
@@ -965,7 +1097,6 @@
           </div>
         </div>
         <div class="hero-visual">
-          <canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
           <div class="hero-glow" aria-hidden="true"></div>
           <div class="hero-orbit orbit-1" aria-hidden="true"></div>
           <div class="hero-orbit orbit-2" aria-hidden="true"></div>
@@ -988,6 +1119,62 @@
           <div class="service-skeleton"></div>
           <div class="service-skeleton"></div>
           <div class="service-skeleton"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trabalhos" class="section works-section" aria-labelledby="trabalhos-h">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Portfólio</div>
+          <h2 id="trabalhos-h">Projetos <span class="text-blue">entregues</span></h2>
+          <p>Uma seleção de trabalhos recentes — cada um construído do zero com foco no problema do cliente.</p>
+        </div>
+
+        <div class="works-grid">
+          <article class="work-card reveal" style="--delay:0ms">
+            <a href="#" class="work-link" aria-disabled="true">
+              <div class="work-thumb">
+                <img src="/assets/images/works/projeto-1.jpg"
+                     alt="Captura de tela do Projeto 1"
+                     width="800" height="500" loading="lazy">
+              </div>
+              <div class="work-body">
+                <span class="work-tag">Landing page</span>
+                <h3>Nome do Projeto 1</h3>
+                <p>Descrição curta: que problema resolveu, stack usada, resultado.</p>
+                <span class="work-cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="work-card reveal" style="--delay:100ms">
+            <a href="#" class="work-link" aria-disabled="true">
+              <div class="work-thumb">
+                <img src="/assets/images/works/projeto-2.jpg" alt="Captura de tela do Projeto 2" width="800" height="500" loading="lazy">
+              </div>
+              <div class="work-body">
+                <span class="work-tag">Sistema web</span>
+                <h3>Nome do Projeto 2</h3>
+                <p>Descrição do projeto e papel desempenhado.</p>
+                <span class="work-cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="work-card reveal" style="--delay:200ms">
+            <a href="#" class="work-link" aria-disabled="true">
+              <div class="work-thumb">
+                <img src="/assets/images/works/projeto-3.jpg" alt="Captura de tela do Projeto 3" width="800" height="500" loading="lazy">
+              </div>
+              <div class="work-body">
+                <span class="work-tag">Automação</span>
+                <h3>Nome do Projeto 3</h3>
+                <p>Descrição do projeto e papel desempenhado.</p>
+                <span class="work-cta">Ver projeto <i data-lucide="arrow-up-right"></i></span>
+              </div>
+            </a>
+          </article>
         </div>
       </div>
     </section>
@@ -1023,6 +1210,41 @@
             <span class="step-icon"><i data-lucide="rocket"></i></span>
             <h3>Entrega & Suporte</h3>
             <p>Lançamos com suporte completo, treinamento e acompanhamento pós-entrega para garantir seu sucesso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="section about-section" aria-labelledby="sobre-h">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-photo reveal">
+            <div class="about-photo-frame">
+              <img src="/assets/images/fernando.jpg"
+                   alt="Fernando — Fundador FARJ Digital"
+                   width="480" height="600" loading="lazy">
+              <div class="about-photo-glow" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="about-content reveal" style="--delay:120ms">
+            <div class="section-tag">Quem está por trás</div>
+            <h2 id="sobre-h">Olá, eu sou <span class="text-blue">Fernando</span></h2>
+            <p class="about-lead">
+              Desenvolvedor web freelancer apaixonado por transformar ideias em
+              produtos digitais que funcionam de verdade.
+            </p>
+            <p>
+              Há 10 anos construo sites, sistemas e automações para empresas no Brasil
+              inteiro. Foco em código limpo, performance e processo claro — do briefing
+              até o deploy final.
+            </p>
+            <ul class="about-skills">
+              <li><i data-lucide="code-2"></i> Full-stack JavaScript</li>
+              <li><i data-lucide="server"></i> Node.js &amp; servidores</li>
+              <li><i data-lucide="zap"></i> Automações &amp; bots</li>
+              <li><i data-lucide="palette"></i> Design centrado no usuário</li>
+            </ul>
+            <a href="#contato" class="btn-primary">Vamos conversar</a>
           </div>
         </div>
       </div>
@@ -1090,7 +1312,9 @@
           <ul>
             <li><a href="#inicio">Início</a></li>
             <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#trabalhos">Trabalhos</a></li>
             <li><a href="#processo">Processo</a></li>
+            <li><a href="#sobre">Sobre</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
         </div>
